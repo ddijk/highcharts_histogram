@@ -3,7 +3,7 @@ Highcharts.chart('container', {
         type: 'column'
     },
     title: {
-        text: 'Processing of JMS message with binary payload'
+        text: 'Processing of JMS message with binary payload, run 2, data size:'+getDataSetSize()
     },
     subtitle: {
         text: ''
@@ -33,7 +33,7 @@ Highcharts.chart('container', {
         }
     },
     series: [{
-        color: 'orange',
+        color: 'green',
         name: 'Doorlooptijd (ms) groepen',
         data: getValues()
 
@@ -56,5 +56,9 @@ function getLabels() {
 }
 
 function data() {
-    return   {'<20': 3271, '20-30': 1333, '30-40': 107, '40-50': 63, '50-60': 31, '>=60': 43}
+    return  {'<20': 288, '20-30': 96, '30-40': 4, '40-50': 5, '50-60': 3, '>=60': 4}
+}
+
+function getDataSetSize() {
+    return Object.values(data()).reduce((acc, e) =>  acc+e)
 }
